@@ -8,4 +8,18 @@
 
 // The very last node one has a tail and it references to null. And this is how you know it's end of the list. 
 
-// Everything stems from the head .
+// Everything stems from the head.
+
+// create specific node and have linked list class.
+
+// before we do, here's a very simple example. 
+
+// node 1 with data equals 100
+const n1 = {
+  data: 100
+}
+
+// node 2 with data equals 200.
+const n2 = {
+  data: 200
+}
