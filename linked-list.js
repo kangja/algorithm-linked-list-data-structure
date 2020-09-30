@@ -64,20 +64,55 @@ class LinkedList {
     this.size = 0;
   }
 
-  // Insert first node 
+  // INSERT FIRST NODE ************************************************ 
   // it doesn't matter how many nodes are in the list
   // the reason we are passing this.head is if there is already something in the head, we want to push that to the next.  
   insertFirst(data) {
-    this.head = new Node(data, this.head)
+    this.head = new Node(data, this.head) 
+    this.size ++
   }
 
-  // insert last node 
-  // insert at index 
-  // get at index 
-  // remove at index 
-  // clear list
+  // INSERT LAST NODE ************************************************ 
+  insertLast(data) {
+    let node = new Node(data);
+    // initializing current
+    let current;
 
-  // print list data
+    // if empty, make head
+    if (!this.head) {
+      this.head = node;
+    } else {
+      current = this.head;
+
+      // it allows us to traverse the list.
+      while (current.next) {
+        current = current.next;
+      } 
+
+      current.next = node;
+    }
+
+    this.size++;
+  }
+
+  // insert at index ************************************************ 
+  // it means inserting anywhere between index. We pass in two things, data and index(where we want to insert)
+  insertAt(data, index) {
+
+    // if index is greater than 0 and the size, we just return(we don't do anything).
+    if (index > 0 && index > this.size) {
+    reutnr
+  }
+}
+
+
+
+
+  // get at index ************************************************ 
+  // remove at index ************************************************ 
+  // clear list************************************************ 
+
+  // print list data*********************************************************
   printListData() {
     // current represents the current node. We will loop through all the nodes and putting each piece of data. 
     let current = this.head; 
@@ -105,11 +140,19 @@ ll.insertFirst(200)
 // }
 
 ll.insertFirst(300)
-ll.printListData();
-// THE REASON 300 is first is because it's the last insert that we've called. 
+// ll.printListData();
+// THE REASON 300 is first is because it's the last insertfirst that we've called.  
 // 300
 // 200
 // 100
+
+
+ll.insertLast(400)
+ll.printListData();
+// 300
+// 200
+// 100
+// 400
 
 
 
