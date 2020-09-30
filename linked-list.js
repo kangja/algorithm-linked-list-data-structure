@@ -53,13 +53,65 @@ class Node {
 }
 
 // constructing node 
-const n1 = new Node(100);
-console.log(n1);
+// const n1 = new Node(100);
+// console.log(n1);
 // Node { data: 100, next: null }
 // this is just one single node. 
 
 class LinkedList {
   constructor() {
     this.head = null;
+    this.size = 0;
   }
+
+  // Insert first node 
+  // it doesn't matter how many nodes are in the list
+  // the reason we are passing this.head is if there is already something in the head, we want to push that to the next.  
+  insertFirst(data) {
+    this.head = new Node(data, this.head)
+  }
+
+  // insert last node 
+  // insert at index 
+  // get at index 
+  // remove at index 
+  // clear list
+
+  // print list data
+  printListData() {
+    // current represents the current node. We will loop through all the nodes and putting each piece of data. 
+    let current = this.head; 
+    
+    while(current) {
+      console.log(current.data);
+      current = current.next;
+    }
+  }
+
 }
+
+// ll stands for linked list
+const ll = new LinkedList();
+ll.insertFirst(100)
+// console.log(ll)
+// LinkedList { head: Node { data: 100, next: null }, size: 0 }
+
+ll.insertFirst(200)
+// console.log(ll)
+// NOW 200 is inserted first and 100 is pushed over. It's pushed over because we set next.head to the next value. 
+// LinkedList {
+//   head: Node { data: 200, next: Node { data: 100, next: null } },
+//   size: 0
+// }
+
+ll.insertFirst(300)
+ll.printListData();
+// THE REASON 300 is first is because it's the last insert that we've called. 
+// 300
+// 200
+// 100
+
+
+
+
+
