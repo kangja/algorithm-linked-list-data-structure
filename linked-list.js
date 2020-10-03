@@ -151,9 +151,40 @@ class LinkedList {
 
 
   // remove at index ************************************************ 
-  // clear list************************************************ 
+  removeAt(index) {
+    if (index > 0 && index > this.size) {
+      return;
+    }
+    let current = this.head; //current variable is the first node/head.
+    let previous; //initializing previous 
+    let count = 0;
 
-  // print list data*********************************************************
+    //remove first
+    if (index === 0) {
+      this.head = current.next
+    } else {
+      while (count < index) {
+        count++;
+        previous = current;
+        current = current.next;
+
+      }
+
+      previous.next = current.next;
+
+    }
+    //since we remove, we have to decrease the size.
+    this.size--;
+
+  }
+  // CLEAR LIST ************************************************************
+  clearList() {
+    this.head = null; // it will delete all since we have no reference to rest of the list. 
+    this.size = 0;
+
+  }
+
+  // PRINT LIST DATA*********************************************************
   printListData() {
     // current represents the current node. We will loop through all the nodes and putting each piece of data. 
     let current = this.head; 
@@ -192,7 +223,6 @@ ll.insertLast(400)
 
 
 
-
 // ll.insertAt(500, 2) //I want to put the data(500) at index 2.
 // ll.printListData();
 // 300
@@ -224,8 +254,61 @@ ll.insertLast(400)
 // ll.getAt(0);
 // 300
 
+
 // ll.getAt(10);
 // we get nothing because at index of 10, there is no value;
+
+
+
+// ll.printListData();
+// 300
+// 200
+// 100
+// 400
+
+
+
+//let's say I want to remove 100, which is at index 2. 
+// ll.removeAt(2)
+// ll.printListData();
+// 300
+// 200
+// 400
+//100 is not gone!
+
+
+
+// ll.removeAt(0)
+// ll.printListData();
+// 200
+// 100
+// 400
+
+
+
+// ll.removeAt(3)
+// ll.printListData();
+// 300
+// 200
+// 100
+
+
+
+
+// ll.removeAt(33) //if we remove something out of range
+// ll.printListData();
+// it doesn't remove anything because it's so far out of range.
+
+// ll.clearList();
+// ll.printListData();
+// WE GET EMPTY LIST. Stuff may be stored in the memory, but it's beside the point. 
+
+
+
+
+
+
+
 
 
 
