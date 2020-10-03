@@ -68,8 +68,8 @@ class LinkedList {
   // it doesn't matter how many nodes are in the list
   // the reason we are passing this.head is if there is already something in the head, we want to push that to the next.  
   insertFirst(data) {
-    this.head = new Node(data, this.head) 
-    this.size ++
+    this.head = new Node(data, this.head)
+    this.size++
   }
 
   // INSERT LAST NODE ************************************************ 
@@ -87,7 +87,7 @@ class LinkedList {
       // it allows us to traverse the list.
       while (current.next) {
         current = current.next;
-      } 
+      }
 
       current.next = node;
     }
@@ -99,16 +99,57 @@ class LinkedList {
   // it means inserting anywhere between index. We pass in two things, data and index(where we want to insert)
   insertAt(data, index) {
 
-    // if index is greater than 0 and the size, we just return(we don't do anything).
+    // if index is greater than 0 and the size, we just return(we don't do anything). If index is out of range
     if (index > 0 && index > this.size) {
-    reutnr
+      return;
+    }
+
+    // if first index
+    if (index === 0) {
+      this.head = new Node(data, this.head);
+      return;
+    }
+
+    // initialize node with the new data 
+    const node = new Node(data)
+    let current, previous;
+
+    // Set current to first
+    current = this.head;
+    let count = 0;
+
+    while (count < index) {
+      previous = current //node before index
+      count++;
+      // we're making rooms for new node
+      current = current.next; //node after the index
+    }
+
+    node.next = current; //take the node that we initialized above  and set the next value to the current. new node next should be whatever the value of current. 
+
+    previous.next = node;
+
+    this.size++; // we increase the size because we just added the node 
+  
   }
-}
-
-
-
 
   // get at index ************************************************ 
+  getAt(index) {
+    let current = this.head;
+    let count = 0;
+
+    while (current) {
+      if (count == index) {
+        console.log(current.data);
+      }
+      count++;
+      current = current.next;
+    }
+    return null;
+  }
+
+
+
   // remove at index ************************************************ 
   // clear list************************************************ 
 
@@ -148,11 +189,48 @@ ll.insertFirst(300)
 
 
 ll.insertLast(400)
-ll.printListData();
+
+
+
+
+// ll.insertAt(500, 2) //I want to put the data(500) at index 2.
+// ll.printListData();
+// 300
+// 200
+// 500
+// 100
+// 400
+
+
+// ll.insertAt(500, 0) //I want to put the data(500) at index 2.
+// ll.printListData();
+// 500
 // 300
 // 200
 // 100
 // 400
+
+
+// ll.insertAt(500, 10) //index of 10 doesn't exist so when we run this, 500 is not just there. It doesn't get added. 
+// ll.printListData();
+// 300
+// 200
+// 100
+// 400
+
+// ll.getAt(2);
+// 100 //it means that at index 2, the value is 100;
+
+// ll.getAt(0);
+// 300
+
+// ll.getAt(10);
+// we get nothing because at index of 10, there is no value;
+
+
+
+
+
 
 
 
